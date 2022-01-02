@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Square : MonoBehaviour
 {
-    
     [SerializeField] Board board;
     SpriteRenderer sr;
+    Color mainColor, selectedColor;
     int x;
     int y;
     bool blackSquare;
@@ -32,6 +32,16 @@ public class Square : MonoBehaviour
         x = (int)GetComponent<Transform>().position.x;
         y = (int)GetComponent<Transform>().position.y;
         blackSquare = x + y % 2 == 0 ? true : false;
+        if(blackSquare)
+        {
+            mainColor = ChessConfig.BlackSquareColor;
+            selectedColor = ChessConfig.SelectedBlackSquareColor;
+        }
+        else
+        {
+            mainColor = ChessConfig.WhiteSquareColor;
+            selectedColor = ChessConfig.SelectedWhiteSquareColor;
+        }
     }
 
     private void OnMouseDown() 
@@ -39,11 +49,11 @@ public class Square : MonoBehaviour
         Debug.Log(x + "," + y);
         if(blackSquare)
         {
-            SetColor(ChessConfig.SelectedBlackSquareCollor);
+            SetColor(ChessConfig.SelectedBlackSquareColor);
         }
         else
         {
-            SetColor(ChessConfig.SelectedWhiteSquareCollor);
+            SetColor(ChessConfig.SelectedWhiteSquareColor);
         }
     }
 
@@ -59,6 +69,6 @@ public class Square : MonoBehaviour
 
     void ResetColor()
     {
-        sr.color = blackSquare? ChessConfig.BlackSquareColor : ChessConfig.WhiteSquareCollor;
+        sr.color = mainColor;
     }
 }
