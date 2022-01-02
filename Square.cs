@@ -14,12 +14,7 @@ public class Square : MonoBehaviour
     void Start()
     {
         Cache();
-        SetColor();
-    }
-
-    void Update()
-    {
-        
+        ConfigColor();
     }
 
     void Cache()
@@ -27,34 +22,19 @@ public class Square : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
     }
 
-    void SetColor()
+    void ConfigColor()
     {
         x = (int)GetComponent<Transform>().position.x;
         y = (int)GetComponent<Transform>().position.y;
-        blackSquare = x + y % 2 == 0 ? true : false;
-        if(blackSquare)
-        {
-            mainColor = ChessConfig.BlackSquareColor;
-            selectedColor = ChessConfig.SelectedBlackSquareColor;
-        }
-        else
-        {
-            mainColor = ChessConfig.WhiteSquareColor;
-            selectedColor = ChessConfig.SelectedWhiteSquareColor;
-        }
+        blackSquare = (x + y) % 2 == 0 ? true : false;
+        mainColor = blackSquare? ChessConfig.BlackSquareColor : ChessConfig.WhiteSquareColor;
+        selectedColor = blackSquare ? ChessConfig.SelectedBlackSquareColor : ChessConfig.SelectedWhiteSquareColor;
+        ResetColor();
     }
 
     private void OnMouseDown() 
     {
-        Debug.Log(x + "," + y);
-        if(blackSquare)
-        {
-            SetColor(ChessConfig.SelectedBlackSquareColor);
-        }
-        else
-        {
-            SetColor(ChessConfig.SelectedWhiteSquareColor);
-        }
+        ChangeColor(selectedColor);
     }
 
     private void OnMouseUp() 
@@ -62,7 +42,7 @@ public class Square : MonoBehaviour
         ResetColor();    
     }
 
-    void SetColor(Color color)
+    void ChangeColor(Color color)
     {
         sr.color = color;
     }
