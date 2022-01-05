@@ -21,10 +21,24 @@ public class Board : MonoBehaviour
     {
         for(int i = 0; i < 8; i++)
         {
-            for (int j = 8 - 1; j >= 0; j--)
+            for (int j = 7; j >= 0; j--)
             {
                 Vector3 pos = new Vector3(i,j, 0);
                 squares[i,j] = Instantiate(square,pos,Quaternion.identity,board);
+            }
+        }
+    }
+
+    public void DisplaySymbolOnSquares(Vector2[] squares)
+    {
+        for(int i = 0; i < squares.Length; i++)
+        {
+            int x  = (int) squares[i].x;
+            int y = (int) squares[i].y;
+
+            if(squares[i] != new Vector2(-1,-1))
+            {
+                this.squares[x, y].GetComponent<Square>().DisplayLegalSymbol();
             }
         }
     }

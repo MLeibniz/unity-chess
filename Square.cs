@@ -3,14 +3,15 @@ using System;
 
 public class Square : MonoBehaviour
 {
+    [SerializeField] GameObject legalSymbol;
     bool blackSquare;
+    GameObject curSymbol;
 
     void Start()
     {
         Cache();
         SetUpColor();
     }
-
     SpriteRenderer sr;
     int x, y;
     void Cache()
@@ -29,30 +30,26 @@ public class Square : MonoBehaviour
         ChangeColor(mainColor);
     }
 
-    bool selected = false, deselecting = false, legalmove = false;    
+    public void DisplayLegalSymbol()
+    {
+        curSymbol = Instantiate(legalSymbol, transform.position, Quaternion.identity, transform);
+        Chess.OnSelection += Deselect;
+    }
+
+    bool selected = false, deselecting = false;    
     void OnMouseDown() 
     {
-        // condição teste
-        if(!legalmove)
-        {
-            deselecting = selected? true : false;
-            Debug.Log("Quadrado clicado com selected: " + selected);
-            Chess.TriggerSelector();
-            Chess.OnSelection += Deselect;
-            selected = true;
-            ChangeColor(selectedColor);
-        }
-        else
-        {
-            //TODO método para mover a peça,
-        }
+        deselecting = selected? true : false;
+        Chess.TriggerSelector();
+        Chess.OnSelection += Deselect;
+        selected = true;
+        ChangeColor(selectedColor);
     }
 
     void OnMouseUpAsButton() 
     {
         if(deselecting)
         {
-            Debug.Log("Square is being deselectd");
             Chess.TriggerSelector();
             selected = false;
             Chess.OnSelection -= Deselect; 
@@ -63,6 +60,8 @@ public class Square : MonoBehaviour
     {
         selected = false;
         ChangeColor(mainColor);
+        if(curSymbol != null) { Debug.Log("CurSymbol not null, destroying it") ; Destroy(curSymbol);}
+        else {Debug.Log("CurSymbol null");}
         Chess.OnSelection -= Deselect;
     }
 
