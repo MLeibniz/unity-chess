@@ -4,6 +4,7 @@ public abstract class Piece : MonoBehaviour
 {
     Camera cam;
     Board board;
+    [SerializeField] bool isBlack;
 
     // Start is called before the first frame update
     void Start()
@@ -43,8 +44,8 @@ public abstract class Piece : MonoBehaviour
     {
         board.DisplaySymbolOnSquares(
                 GetLegalMoves(
-                    new Vector2(transform.position.x, transform.position.y)));
+                    new Vector2(transform.position.x, transform.position.y) , isBlack));
     }
 
-    public abstract Vector2[] GetLegalMoves(Vector2 pos);
+    public abstract Vector2[] GetLegalMoves(Vector2 pos, bool isBlack );
 }
