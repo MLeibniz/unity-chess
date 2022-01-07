@@ -5,13 +5,11 @@ public class Board : MonoBehaviour
     [SerializeField] GameObject square;
     public GameObject[,] squares;
     Transform board;
-
     void Start()
     {
         Cache();
         SetUp();
     }
-
     void Cache()
     {   
         board = this.GetComponent<Transform>();     
@@ -28,7 +26,6 @@ public class Board : MonoBehaviour
             }
         }
     }
-
     public void DisplaySymbolOnSquares(Vector2[] squares)
     {
         for(int i = 0; i < squares.Length; i++)

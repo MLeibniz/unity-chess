@@ -32,6 +32,7 @@ public class Square : MonoBehaviour
 
     public void DisplayLegalSymbol()
     {
+        Debug.Log("Square at " + x + ", " + y + "will display a sign of legal move");
         curSymbol = Instantiate(legalSymbol, transform.position, Quaternion.identity, transform);
         Chess.OnSelection += Deselect;
     }
