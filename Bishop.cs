@@ -4,11 +4,10 @@ public class Bishop : Piece
 {
     public override void SetLegalSize()
     {
-        moves = new LegalMove[16];
+        moves = new Move[16];
     } 
-    public override void GetLegalMoves()
+    public override void GetMoves()
     {
 
-        RemoveOffBoardMoves();
     }
 }

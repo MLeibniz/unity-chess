@@ -4,19 +4,19 @@ public class Rook : Piece
 {
     public override void SetLegalSize()
     {
-        moves = new LegalMove[16];
+        moves = new Move[16];
     } 
-    public override void GetLegalMoves()
+    public override void GetMoves()
     {
         for(int i = 0; i < 8; i++) // horizontal moves
         {
             if(i == file)
             {
-                moves[i] = new LegalMove(-1,-1);
+                moves[i] = new Move(-1,-1);
             }
             else
             {
-                moves[i] = new LegalMove(i, rank);
+                moves[i] = new Move(i, rank);
             }
         }
 
@@ -24,11 +24,11 @@ public class Rook : Piece
         {
             if(i - 8 == rank)
             {
-                moves[i] = new LegalMove(-1,-1);
+                moves[i] = new Move(-1,-1);
             }
             else
             {
-                moves[i] = new LegalMove(file, i -8);
+                moves[i] = new Move(file, i -8);
             }
         }
 
