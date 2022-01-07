@@ -4,22 +4,19 @@ public class Rook : Piece
 {
     public override void SetLegalSize()
     {
-        legal = new Vector2[16];
+        moves = new LegalMove[16];
     } 
     public override void GetLegalMoves()
     {
-        Debug.Log("Torre está na coluna " + file + " e na linha " + rank);
-        Debug.Log("Position in X,Y = " + transform.position.x + ", " + transform.position.y);
-
         for(int i = 0; i < 8; i++) // horizontal moves
         {
             if(i == file)
             {
-                legal[i] = new Vector2(-1,-1);
+                moves[i] = new LegalMove(-1,-1);
             }
             else
             {
-                legal[i] = new Vector2(i, rank);
+                moves[i] = new LegalMove(i, rank);
             }
         }
 
@@ -27,11 +24,11 @@ public class Rook : Piece
         {
             if(i - 8 == rank)
             {
-                legal[i] = new Vector2(-1,-1);
+                moves[i] = new LegalMove(-1,-1);
             }
             else
             {
-                legal[i] = new Vector2(file, i -8);
+                moves[i] = new LegalMove(file, i -8);
             }
         }
 

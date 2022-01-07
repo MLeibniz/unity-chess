@@ -6,7 +6,7 @@ public abstract class Piece : MonoBehaviour
     Board board;
     [SerializeField] protected bool bottomPlayer;
 
-    protected Vector2[] legal; //legal moves
+    protected LegalMove[] moves;
     protected int rank, file; // current position
 
     void Start()
@@ -49,12 +49,12 @@ public abstract class Piece : MonoBehaviour
 
     void DisplayLegalMoves()
     {
-        if(legal == null)
+        if(moves == null)
         {
             Debug.Log("Nada a mostrar");
         }
         GetLegalMoves();
-        board.DisplaySymbolOnSquares(legal);
+        board.DisplaySymbolOnSquares(moves);
     }
 
     void SetPos()
@@ -65,11 +65,11 @@ public abstract class Piece : MonoBehaviour
 
     protected void RemoveOffBoardMoves()
     {
-        for (int i = 0; i < legal.Length; i++)
+        for (int i = 0; i < moves.Length; i++)
         {
-            if(legal[i].x < 0 || legal[i].x > 7 || legal[i].y < 0 || legal[i].y > 7) //marca a posição como ilegal
+            if(moves[i].x < 0 || moves[i].x > 7 || moves[i].y < 0 || moves[i].y > 7) //marca a posição como ilegal
             {
-                legal[i] = new Vector2(-1,-1);
+                moves[i] = new LegalMove(-1,-1);
             }
         }
     }

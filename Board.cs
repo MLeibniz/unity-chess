@@ -26,14 +26,14 @@ public class Board : MonoBehaviour
             }
         }
     }
-    public void DisplaySymbolOnSquares(Vector2[] squares)
+    public void DisplaySymbolOnSquares(LegalMove[] squares)
     {
         for(int i = 0; i < squares.Length; i++)
         {
             int x  = (int) squares[i].x;
             int y = (int) squares[i].y;
 
-            if(squares[i] != new Vector2(-1,-1))
+            if(squares[i].x != -1 )
             {
                 this.squares[x, y].GetComponent<Square>().DisplayLegalSymbol();
             }
