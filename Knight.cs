@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Knight : Piece
 {
-    public override void SetLegalSize()
+    public override void SetMaxMoves()
     {
         moves = new Move[8];
     } 
@@ -19,13 +19,5 @@ public class Knight : Piece
         moves[5] = new Move (file - 1, rank - 2);
         moves[6] = new Move (file - 2, rank - 1);
         moves[7] = new Move (file - 2, rank + 1);
-    }
-
-    void CheckOccupiedMoves()
-    {
-        foreach(Move m in moves)
-        {
-            
-        }
     }
 }

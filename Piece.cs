@@ -15,7 +15,7 @@ public abstract class Piece : MonoBehaviour
     {
         Cache();
         SetRankAndFile();
-        SetLegalSize();
+        SetMaxMoves();
         GetMoves();
         SetSprite();
     }
@@ -123,5 +123,5 @@ public abstract class Piece : MonoBehaviour
 
     public abstract void GetMoves();
 
-    public abstract void SetLegalSize();
+    public abstract void SetMaxMoves();
 }

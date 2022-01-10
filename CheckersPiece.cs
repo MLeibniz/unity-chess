@@ -13,7 +13,7 @@ public class CheckersPiece : Piece
 
         RemoveOffBoardMoves();
     }
-    public override void SetLegalSize()
+    public override void SetMaxMoves()
     {
         moves = new Move[4];
     }

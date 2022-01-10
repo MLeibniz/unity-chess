@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Pawn : Piece
 {
-    public override void SetLegalSize()
+    public override void SetMaxMoves()
     {
         moves = new Move[4];
     } 

@@ -75,7 +75,6 @@ public class PositionManager : MonoBehaviour
             case 'p':
                 return pieces[5];
             default: 
-                Debug.Log("Char: " + c + "was identified as null");
                 return null;
         }
     }

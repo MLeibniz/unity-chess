@@ -17,12 +17,12 @@ public class Board : MonoBehaviour
     }
     void SetUp()
     {
-        for(int i = 0; i < 8; i++)
+        for(int rank = 0; rank < 8; rank++)
         {
-            for (int j = 7; j >= 0; j--)
+            for (int file = 7; file >= 0; file--)
             {
-                Vector3 pos = new Vector3(i,j, 0);
-                squares[i,j] = Instantiate(square,pos,Quaternion.identity,board);
+                Vector3 pos = new Vector3(rank,file, 0);
+                squares[rank,file] = Instantiate(square,pos,Quaternion.identity,board);
             }
         }
     }
@@ -32,7 +32,6 @@ public class Board : MonoBehaviour
         {
             int x  = (int) squares[i].x;
             int y = (int) squares[i].y;
-            Debug.Log(x + ", " + y);
             if(!squares[i].offBoard)
             {
                 this.squares[x, y].GetComponent<Square>().DisplayLegalSymbol();
