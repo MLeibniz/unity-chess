@@ -11,10 +11,9 @@ public class Pawn : Piece
     {
         int colorFactor = bottomPlayer? 1 : -1;
 
-        moves[0] = new Move (file, rank + 1); // pra frente
-        moves[1] = new Move (file + 1, rank - 1); // captura direita / En Passant
-        moves[2] = new Move (file -1, rank - 2); // captura esquerda / En Passant
-        moves[3] = new Move (file, rank + 2); // avanço-duplo
-
+        moves[0] = new Move (file, rank + 1 * colorFactor); // pra frente
+        moves[1] = new Move (file + 1, rank + 1 * colorFactor); // captura direita / En Passant
+        moves[2] = new Move (file -1, rank + 1 * colorFactor); // captura esquerda / En Passant
+        moves[3] = ((rank == 1 && bottomPlayer)|| (rank == 6 && !bottomPlayer)) ? new Move (file, rank + 2 * colorFactor) : moves[3] = new Move(-1,-1);
     }
 }
