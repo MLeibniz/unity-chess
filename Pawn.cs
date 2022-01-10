@@ -4,7 +4,7 @@ public class Pawn : Piece
 {
     public override void SetLegalSize()
     {
-        moves = new Move[8];
+        moves = new Move[4];
     } 
         
     public override void GetMoves()
