@@ -31,7 +31,5 @@ public class Rook : Piece
                 moves[i] = new Move(file, i -8);
             }
         }
-
-        RemoveOffBoardMoves();
     }
 }

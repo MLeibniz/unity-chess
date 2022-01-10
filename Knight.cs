@@ -19,7 +19,5 @@ public class Knight : Piece
         moves[5] = new Move (file - 1, rank - 2);
         moves[6] = new Move (file - 2, rank - 1);
         moves[7] = new Move (file - 2, rank + 1);
-
-        RemoveOffBoardMoves();
     }
 }
