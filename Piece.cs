@@ -5,20 +5,32 @@ public abstract class Piece : MonoBehaviour
     Camera cam;
     Board board;
     [SerializeField] protected bool bottomPlayer;
-
+    [SerializeField] Sprite bottomPlayerSprite, topPlayerSprite;
+    SpriteRenderer sr;
     protected Move[] moves;
     protected int rank, file; // current position
 
     void Start()
     {
         Cache();
-        SetPos();
+        SetRankAndFile();
         SetLegalSize();
         GetMoves();
+        SetSprite();
     }
 
+    public void SetPlayer(bool b)
+    {
+        bottomPlayer = b;
+    }
+
+    void SetSprite()
+    {
+        sr.sprite = bottomPlayer? bottomPlayerSprite : topPlayerSprite;
+    }
     void Cache()
     {
+        sr = GetComponent<SpriteRenderer>();
         cam = Camera.main;
         board = FindObjectOfType<Board>();
     }
@@ -37,7 +49,7 @@ public abstract class Piece : MonoBehaviour
         Vector3 newPos = cam.ScreenToWorldPoint(Input.mousePosition);
         transform.position = new Vector3((int) (newPos.x + 0.5f), (int) (newPos.y + 0.5f), transform.position.z);
 
-        SetPos();
+        SetRankAndFile();
         AdjustLayer(-1);
         Chess.TriggerSelector();
     }
@@ -57,7 +69,7 @@ public abstract class Piece : MonoBehaviour
         board.DisplaySymbolOnSquares(moves);
     }
 
-    void SetPos()
+    void SetRankAndFile()
     {
         file = (int) transform.position.x;
         rank = (int) transform.position.y;
