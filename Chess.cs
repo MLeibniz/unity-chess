@@ -6,12 +6,11 @@ public static class Chess
     public delegate void SelectorHandler(object sender, EventArgs e);
     public static event SelectorHandler OnSelection;
 
-    public static void TriggerSelector()
+    public static void TriggerSelector() // to be called everytime something new is selected and other selected should be deselected
     {
         if(OnSelection != null)
         {
             OnSelection(null,null);
         }
     }
-
 }

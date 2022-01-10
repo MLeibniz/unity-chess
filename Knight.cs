@@ -20,4 +20,12 @@ public class Knight : Piece
         moves[6] = new Move (file - 2, rank - 1);
         moves[7] = new Move (file - 2, rank + 1);
     }
+
+    void CheckOccupiedMoves()
+    {
+        foreach(Move m in moves)
+        {
+            
+        }
+    }
 }

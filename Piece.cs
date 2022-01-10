@@ -9,6 +9,7 @@ public abstract class Piece : MonoBehaviour
     SpriteRenderer sr;
     protected Move[] moves;
     protected int rank, file; // current position
+    
 
     void Start()
     {
@@ -35,9 +36,17 @@ public abstract class Piece : MonoBehaviour
         board = FindObjectOfType<Board>();
     }
 
+    bool selected, deselecting = false;
     void OnMouseDown() {
-        DisplayLegalMoves();
-        AdjustLayer(1);
+        if(!selected)
+        {
+            DisplayLegalMoves();
+            AdjustLayer(1);
+        }
+        else
+        {
+            deselecting = true;
+        }
     }
 
     void OnMouseDrag() {
@@ -45,13 +54,39 @@ public abstract class Piece : MonoBehaviour
         transform.position = new Vector3(newPos.x, newPos.y, transform.position.z);
     }
 
-    void OnMouseUpAsButton() {
+    void OnMouseUp() {
         Vector3 newPos = cam.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = new Vector3((int) (newPos.x + 0.5f), (int) (newPos.y + 0.5f), transform.position.z);
 
-        SetRankAndFile();
+        bool legalmove = CheckLegal(newPos);
+
+        if(legalmove)
+        {
+            
+            transform.position = new Vector3((int) (newPos.x + 0.5f), (int) (newPos.y + 0.5f), transform.position.z);
+            SetRankAndFile();
+        }
+        else
+        {
+            ResetPos();
+        }
+
         AdjustLayer(-1);
         Chess.TriggerSelector();
+    }
+
+    bool CheckLegal(Vector3 pos)
+    {
+        foreach(Move m in moves)
+        {
+            if(m.x == (int)(pos.x + 0.5f) && m.y == (int)(pos.y + 0.5f)) return true;
+        }
+
+        return false;
+    }
+
+    void ResetPos()
+    {
+        transform.position = new Vector3(file, rank, transform.position.z);
     }
 
     void AdjustLayer(int layer)

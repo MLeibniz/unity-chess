@@ -37,24 +37,25 @@ public class PositionManager : MonoBehaviour
 
                 if(char.IsDigit(squares[count])) //is space?
                 {
-                    Debug.Log("Char: " + c + " identified as digit");
                     file += c;
                 }
                 else if(char.IsLower(c) && piece) // is black?
                 {
-                    Debug.Log("Char: " + c + " identified as a black piece");
-                    GameObject g = Instantiate(piece, piecePos, Quaternion.identity);
-                    g.GetComponent<Piece>().SetPlayer(false);
+                    InstantiatePiece(piece, piecePos, false);
                 }
                 else if(piece)
                 {
-                    Debug.Log("Char: " + c + " identified as a white piece");
-                    GameObject g = Instantiate(piece, piecePos, Quaternion.identity);
-                    g.GetComponent<Piece>().SetPlayer(true);
+                    InstantiatePiece(piece,piecePos, true);
                 }
                 count++;
             }
         }
+    }
+
+    void InstantiatePiece(GameObject piece, Vector3 piecePos, bool bottomPlayer)
+    {
+        GameObject g = Instantiate(piece, piecePos, Quaternion.identity);
+        g.GetComponent<Piece>().SetPlayer(bottomPlayer);
     }
 
     GameObject CharToPiece(char c)
