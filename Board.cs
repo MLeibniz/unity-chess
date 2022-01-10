@@ -32,7 +32,7 @@ public class Board : MonoBehaviour
         {
             int x  = (int) squares[i].x;
             int y = (int) squares[i].y;
-
+            Debug.Log(x + ", " + y);
             if(!squares[i].offBoard)
             {
                 this.squares[x, y].GetComponent<Square>().DisplayLegalSymbol();

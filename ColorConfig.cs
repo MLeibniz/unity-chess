@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EventManager : MonoBehaviour
+public class ColorConfig : MonoBehaviour
 {
     [SerializeField] Color BlackSquareColor, 
     SelectedBlackSquareColor,
