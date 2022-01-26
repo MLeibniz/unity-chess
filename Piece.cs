@@ -54,12 +54,13 @@ public abstract class Piece : MonoBehaviour
         transform.position = new Vector3(newPos.x, newPos.y, transform.position.z);
     }
 
+    [SerializeField] bool setup = true;
     void OnMouseUp() {
         Vector3 newPos = cam.ScreenToWorldPoint(Input.mousePosition);
 
         bool legalmove = CheckLegal(newPos);
 
-        if(legalmove)
+        if( setup || legalmove) //setup bool only for debugging
         {
             
             transform.position = new Vector3((int) (newPos.x + 0.5f), (int) (newPos.y + 0.5f), transform.position.z);

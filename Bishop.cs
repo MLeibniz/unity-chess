@@ -10,22 +10,24 @@ public class Bishop : Piece
     bool blocked;
     public override void GetMoves()
     {
+        /*
         moveIndex = 0;
      
-        Diagonal(true, true); //Up - Right -> limit rank 7, file 7
-        Diagonal(false, true); //Down - Right -> limit rank 0, file 7
-        Diagonal(false, false); //Down - Left -> limit rank 0, file 0
-        Diagonal(true, false); //Up - Left -> limit rank 7, file 0
+        Diagonal(1, 1); //Up - Right -> limit rank 7, file 7
+        Diagonal(-1, 1); //Down - Right -> limit rank 0, file 7
+        Diagonal(-1, -1); //Down - Left -> limit rank 0, file 0
+        Diagonal(1, -1); //Up - Left -> limit rank 7, file 0
 
         Invalidate();
+        */
     }
 
-    void Diagonal(bool up, bool right)
+    void Diagonal(int upFactor, int rightFactor)
     {
-        int count = 0;
-        int higher = rank > file ? rank : file;
-        int lower = rank > file ? file : rank;
-
+        for(int i = 1; i < 8; i++)
+        {
+            moves[moveIndex] = new Move( file + (i*rightFactor), rank + (i*upFactor));
+        }
     }
 
     void Invalidate()
