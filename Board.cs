@@ -3,7 +3,7 @@ using UnityEngine;
 public class Board : MonoBehaviour
 {
     [SerializeField] GameObject square;
-    public GameObject[,] squares;
+    public Square[,] squares;
     Transform board;
     void Start()
     {
@@ -13,7 +13,7 @@ public class Board : MonoBehaviour
     void Cache()
     {   
         board = this.GetComponent<Transform>();     
-        squares = new GameObject[8,8];
+        squares = new Square[8,8];
     }
     void SetUp()
     {
@@ -22,11 +22,11 @@ public class Board : MonoBehaviour
             for (int file = 7; file >= 0; file--)
             {
                 Vector3 pos = new Vector3(rank,file, 0);
-                squares[rank,file] = Instantiate(square,pos,Quaternion.identity,board);
+                squares[rank,file] = Instantiate(square,pos,Quaternion.identity,board).GetComponent<Square>();
             }
         }
     }
-    public void DisplaySymbolOnSquares(Move[] squares)
+    public void DisplaySymbolOnSquares(Square[] squares)
     {
         for(int i = 0; i < squares.Length; i++)
         {
