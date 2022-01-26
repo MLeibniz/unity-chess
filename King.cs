@@ -9,7 +9,7 @@ public class King : Piece
         
     public override void GetMoves()
     {
-        moves[4] = board.squares[-1,-1];
+        moves[4] = null;
         int count = 0;
         for (int r = -1; r < 2; r++)
         {
