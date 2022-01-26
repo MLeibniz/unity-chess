@@ -30,12 +30,4 @@ public class Bishop : Piece
             // moves[moveIndex] = new Move( file + (i*rightFactor), rank + (i*upFactor));
         }
     }
-
-    void Invalidate()
-    {
-        for(int i = moveIndex; i < 16; i++)
-        {
-            moves[i] = null;
-        }
-    }
 }

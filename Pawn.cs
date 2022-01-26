@@ -11,11 +11,17 @@ public class Pawn : Piece
     {
         int colorFactor = bottomPlayer? 1 : -1;
 
-        moves[0] = board.squares[file, rank + 1 * colorFactor].GetComponent<Square>(); // pra frente
-        moves[1] = board.squares[file + 1, rank + 1 * colorFactor].GetComponent<Square>(); // captura direita / En Passant
-        moves[2] = board.squares[file -1, rank + 1 * colorFactor].GetComponent<Square>(); // captura esquerda / En Passant
-        moves[3] = ((rank == 1 && bottomPlayer)|| (rank == 6 && !bottomPlayer)) ? 
-                        board.squares[file, rank + 2 * colorFactor].GetComponent<Square>() : 
-                        board.squares[-1,-1].GetComponent<Square>(); //Avanço Duplo
+        AddMove(0, file, rank + 1 * colorFactor); // pra frente
+        AddMove(1, file + 1, rank + 1 * colorFactor); // captura direita / En Passant
+        AddMove(2, file -1, rank + 1 * colorFactor); // captura esquerda / En Passant
+
+        if ((rank == 1 && bottomPlayer)|| (rank == 6 && !bottomPlayer))
+        {
+            AddMove(3, file, rank + 2 * colorFactor);
+        }
+        else
+        {
+            moves[3] = null;
+        }
     }
 }

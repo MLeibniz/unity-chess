@@ -16,7 +16,7 @@ public class King : Piece
             for (int f = -1; f < 2; f++)
             {
                 if(count == 4){count++ ; continue;}
-                moves[count] = board.squares[file + f, rank + r].GetComponent<Square>();
+                AddMove(count,file + f, rank + r);
                 count++;
             }       
         }

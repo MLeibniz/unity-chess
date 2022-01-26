@@ -20,16 +20,4 @@ public class Knight : Piece
         AddMove(6, file - 2, rank - 1);
         AddMove(7, file - 2, rank + 1);
     }
-
-    void AddMove(int index, int x, int y)
-    {
-        try
-        {
-            moves[index] = board.squares[x,y];
-        }
-        catch
-        {
-            moves[index] = null;
-        }
-    }
 }
