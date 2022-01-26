@@ -4,16 +4,18 @@ public class Pawn : Piece
 {
     public override void SetMaxMoves()
     {
-        moves = new Move[4];
+        moves = new Square[4];
     } 
         
     public override void GetMoves()
     {
         int colorFactor = bottomPlayer? 1 : -1;
 
-        moves[0] = new Move (file, rank + 1 * colorFactor); // pra frente
-        moves[1] = new Move (file + 1, rank + 1 * colorFactor); // captura direita / En Passant
-        moves[2] = new Move (file -1, rank + 1 * colorFactor); // captura esquerda / En Passant
-        moves[3] = ((rank == 1 && bottomPlayer)|| (rank == 6 && !bottomPlayer)) ? new Move (file, rank + 2 * colorFactor) : moves[3] = new Move(-1,-1); //Avanço Duplo
+        moves[0] = board.squares[file, rank + 1 * colorFactor].GetComponent<Square>(); // pra frente
+        moves[1] = board.squares[file + 1, rank + 1 * colorFactor].GetComponent<Square>(); // captura direita / En Passant
+        moves[2] = board.squares[file -1, rank + 1 * colorFactor].GetComponent<Square>(); // captura esquerda / En Passant
+        moves[3] = ((rank == 1 && bottomPlayer)|| (rank == 6 && !bottomPlayer)) ? 
+                        board.squares[file, rank + 2 * colorFactor].GetComponent<Square>() : 
+                        board.squares[-1,-1].GetComponent<Square>(); //Avanço Duplo
     }
 }
