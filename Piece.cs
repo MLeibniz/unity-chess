@@ -122,6 +122,18 @@ public abstract class Piece : MonoBehaviour
         }
     }
 
+    protected void AddMove(int index, int x, int y)
+    {
+        try
+        {
+            moves[index] = board.squares[x,y];
+        }
+        catch
+        {
+            moves[index] = null;
+        }
+    }
+
     public abstract void GetMoves();
 
     public abstract void SetMaxMoves();

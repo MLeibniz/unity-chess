@@ -11,13 +11,25 @@ public class Knight : Piece
     {
         int colorFactor = bottomPlayer? 1 : -1;
 
-        moves[0] = board.squares[file + 1, rank + 2].GetComponent<Square>();
-        moves[1] = board.squares[file + 1, rank - 2].GetComponent<Square>();
-        moves[2] = board.squares[file + 2, rank - 1].GetComponent<Square>();
-        moves[3] = board.squares[file + 2, rank + 1].GetComponent<Square>();
-        moves[4] = board.squares[file - 1, rank + 2].GetComponent<Square>();
-        moves[5] = board.squares[file - 1, rank - 2].GetComponent<Square>();
-        moves[6] = board.squares[file - 2, rank - 1].GetComponent<Square>();
-        moves[7] = board.squares[file - 2, rank + 1].GetComponent<Square>();
+        AddMove(0, file + 1, rank + 2);
+        AddMove(1, file + 1, rank - 2);
+        AddMove(2, file + 2, rank - 1);
+        AddMove(3, file + 2, rank + 1);
+        AddMove(4, file - 1, rank + 2);
+        AddMove(5, file - 1, rank - 2);
+        AddMove(6, file - 2, rank - 1);
+        AddMove(7, file - 2, rank + 1);
+    }
+
+    void AddMove(int index, int x, int y)
+    {
+        try
+        {
+            moves[index] = board.squares[x,y];
+        }
+        catch
+        {
+            moves[index] = null;
+        }
     }
 }
