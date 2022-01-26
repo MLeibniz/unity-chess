@@ -34,7 +34,7 @@ public class Board : MonoBehaviour
             int y = (int) squares[i].y;
             if(!squares[i].offBoard)
             {
-                this.squares[x, y].GetComponent<Square>().DisplayLegalSymbol();
+                this.squares[x, y].DisplayLegalSymbol();
             }
         }
     }

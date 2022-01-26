@@ -117,7 +117,7 @@ public abstract class Piece : MonoBehaviour
         {
             if(moves[i].x < 0 || moves[i].x > 7 || moves[i].y < 0 || moves[i].y > 7) //marca a posição como ilegal
             {
-                moves[i] = new Move(-1,-1);
+                moves[i] = null;
             }
         }
     }

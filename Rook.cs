@@ -4,7 +4,7 @@ public class Rook : Piece
 {
     public override void SetMaxMoves()
     {
-        moves = new Move[16];
+        moves = new Square[16];
     } 
     public override void GetMoves()
     {
@@ -12,11 +12,11 @@ public class Rook : Piece
         {
             if(i == file)
             {
-                moves[i] = new Move(-1,-1);
+                moves[i] = board.squares[-1,-1].GetComponent<Square>();
             }
             else
             {
-                moves[i] = new Move(i, rank);
+                moves[i] = board.squares[i, rank];
             }
         }
 
@@ -24,11 +24,11 @@ public class Rook : Piece
         {
             if(i - 8 == rank)
             {
-                moves[i] = new Move(-1,-1);
+                moves[i] = board.squares[-1,-1];
             }
             else
             {
-                moves[i] = new Move(file, i -8);
+                moves[i] = board.squares[file, i -8];
             }
         }
     }

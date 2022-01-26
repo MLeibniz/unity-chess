@@ -26,7 +26,7 @@ public class Bishop : Piece
     {
         for(int i = 1; i < 8; i++)
         {
-            moves[moveIndex] = Board.squares[file + (i*rightFactor), rank + (i*upFactor)].GetComponent<Square>();
+            moves[moveIndex] = board.squares[file + (i*rightFactor), rank + (i*upFactor)];
             // moves[moveIndex] = new Move( file + (i*rightFactor), rank + (i*upFactor));
         }
     }
