@@ -3,11 +3,11 @@ using UnityEngine;
 public abstract class Piece : MonoBehaviour
 {
     Camera cam;
-    Board board;
     [SerializeField] protected bool bottomPlayer;
     [SerializeField] Sprite bottomPlayerSprite, topPlayerSprite;
     SpriteRenderer sr;
-    protected Move[] moves;
+    protected Board board;
+    protected Square[] moves;
     protected int rank, file; // current position
     
 
@@ -77,7 +77,7 @@ public abstract class Piece : MonoBehaviour
 
     bool CheckLegal(Vector3 pos)
     {
-        foreach(Move m in moves)
+        foreach(Square m in moves)
         {
             if(m.x == (int)(pos.x + 0.5f) && m.y == (int)(pos.y + 0.5f)) return true;
         }
