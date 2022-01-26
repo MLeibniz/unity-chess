@@ -13,13 +13,29 @@ public class Square : MonoBehaviour
         SetUpColor();
     }
     SpriteRenderer sr;
-    int x, y;
+    public int x, y;
     void Cache()
     {
         sr = GetComponent<SpriteRenderer>();
         x = (int)GetComponent<Transform>().position.x;
         y = (int)GetComponent<Transform>().position.y;
     }
+
+    public bool offBoard;
+
+    public Move(int x, int y)
+    {
+        this.x = x;
+        this.y = y;
+        Status();
+    }
+    void Status()
+    {
+        if(x < 0 || x > 7 || y < 0 || y > 7){
+            offBoard = true;
+        }
+    }    
+
 
     Color mainColor, selectedColor;
     void SetUpColor()
