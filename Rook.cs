@@ -10,25 +10,40 @@ public class Rook : Piece
     {
         for(int i = 0; i < 8; i++) // horizontal moves
         {
-            if(i == file)
+            try
             {
-                moves[i] = board.squares[-1,-1].GetComponent<Square>();
+                if(i == file)
+                {
+                    moves[i] = board.squares[-1,-1].GetComponent<Square>();
+                }
+                else
+                {
+                    moves[i] = board.squares[i, rank];
+                }
             }
-            else
+            catch
             {
-                moves[i] = board.squares[i, rank];
+                moves[i] = null;
             }
+
         }
 
         for(int i = 8; i < 16; i++) // vertical moves
         {
-            if(i - 8 == rank)
+            try
             {
-                moves[i] = board.squares[-1,-1];
+                if(i - 8 == rank)
+                {
+                    moves[i] = board.squares[-1,-1];
+                }
+                else
+                {
+                    moves[i] = board.squares[file, i -8];
+                }
             }
-            else
+            catch
             {
-                moves[i] = board.squares[file, i -8];
+                moves[i] = null;
             }
         }
     }
