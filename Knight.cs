@@ -4,7 +4,7 @@ public class Knight : Piece
 {
     public override void SetMaxMoves()
     {
-        moves = new Move[8];
+        moves = new Square[8];
     } 
         
     public override void GetMoves()
