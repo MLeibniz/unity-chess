@@ -4,7 +4,7 @@ public class Bishop : Piece
 {
     public override void SetMaxMoves()
     {
-        moves = new Move[14];
+        moves = new Square[14];
     }
     int moveIndex; 
     bool blocked;
@@ -26,7 +26,8 @@ public class Bishop : Piece
     {
         for(int i = 1; i < 8; i++)
         {
-            moves[moveIndex] = new Move( file + (i*rightFactor), rank + (i*upFactor));
+            moves[moveIndex] = Board.squares[file + (i*rightFactor), rank + (i*upFactor)].GetComponent<Square>();
+            // moves[moveIndex] = new Move( file + (i*rightFactor), rank + (i*upFactor));
         }
     }
 
@@ -34,7 +35,7 @@ public class Bishop : Piece
     {
         for(int i = moveIndex; i < 16; i++)
         {
-            moves[i] = new Move(-1,-1);
+            moves[i] = null;
         }
     }
 }
