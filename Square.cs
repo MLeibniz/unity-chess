@@ -21,8 +21,6 @@ public class Square : MonoBehaviour
         y = (int)GetComponent<Transform>().position.y;
     }
 
-    public bool offBoard;
-
     Color mainColor, selectedColor;
     void SetUpColor()
     {

@@ -111,17 +111,6 @@ public abstract class Piece : MonoBehaviour
         rank = (int) transform.position.y;
     }
 
-    protected void RemoveOffBoardMoves()
-    {
-        for (int i = 0; i < moves.Length; i++)
-        {
-            if(moves[i].x < 0 || moves[i].x > 7 || moves[i].y < 0 || moves[i].y > 7) //marca a posição como ilegal
-            {
-                moves[i] = null;
-            }
-        }
-    }
-
     protected void AddMove(int index, int x, int y)
     {
         try
