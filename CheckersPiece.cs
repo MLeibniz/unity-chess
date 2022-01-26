@@ -6,15 +6,15 @@ public class CheckersPiece : Piece
     {
         int colorFactor = bottomPlayer? 1 : -1;
 
-        moves[0] = new Move (file + 1, rank + 1 * colorFactor);
-        moves[1] = new Move (file + 2, rank + 2 * colorFactor);
-        moves[2] = new Move (file - 1, rank + 1 * colorFactor);
-        moves[3] = new Move (file - 2, rank + 2 * colorFactor);
+        moves[0] = board.squares[file + 1, rank + 1 * colorFactor].GetComponent<Square>();
+        moves[1] = board.squares[file + 2, rank + 2 * colorFactor].GetComponent<Square>();
+        moves[2] = board.squares[file - 1, rank + 1 * colorFactor].GetComponent<Square>();
+        moves[3] = board.squares[file - 2, rank + 2 * colorFactor].GetComponent<Square>();
 
         RemoveOffBoardMoves();
     }
     public override void SetMaxMoves()
     {
-        moves = new Move[4];
+        moves = new Square[4];
     }
 }
